@@ -70,4 +70,91 @@ document.getElementById('year').textContent=new Date().getFullYear();
 <p>Contacto: <a href="mailto:Victor.tobar2801@gmail.com">Victor.tobar2801@gmail.com</a></p>
 <p><a href="privacidad.html">Política de Privacidad</a></p>
 <p><a href="aviso-legal.html">Aviso Legal</a></p>
+
+<section id="calculadora-iva" class="calculator">
+  <h2>Calculadora de IVA Chile (19%)</h2>
+  <p>Calcula el IVA, agrega IVA o quítalo de un precio.</p>
+
+  <label for="iva-monto">Ingresa el monto en pesos ($)</label>
+  <input type="number" id="iva-monto" placeholder="Ej: 100000" min="0">
+
+  <label for="iva-tipo">Selecciona el cálculo</label>
+  <select id="iva-tipo">
+    <option value="agregar">Agregar IVA (19%)</option>
+    <option value="quitar">Quitar IVA incluido</option>
+    <option value="calcular">Calcular solo el IVA</option>
+  </select>
+
+  <button type="button" onclick="calcularIVA()">Calcular IVA</button>
+
+  <div id="iva-resultado" aria-live="polite"></div>
+</section>
+
+<style>
+#calculadora-iva {
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 500px;
+  border-radius: 12px;
+  background: #f2f6fa;
+  color: #222;
+}
+#calculadora-iva input,
+#calculadora-iva select {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  box-sizing: border-box;
+}
+#calculadora-iva button {
+  padding: 12px 20px;
+  background: #1769aa;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+#iva-resultado {
+  margin-top: 15px;
+  font-weight: bold;
+  line-height: 1.8;
+}
+</style>
+
+<script>
+function calcularIVA() {
+  const monto = Number(document.getElementById("iva-monto").value);
+  const tipo = document.getElementById("iva-tipo").value;
+  const resultado = document.getElementById("iva-resultado");
+
+  if (!Number.isFinite(monto) || monto <= 0) {
+    resultado.textContent = "Ingresa un monto válido.";
+    return;
+  }
+
+  let neto, iva, total;
+
+  if (tipo === "agregar") {
+    neto = monto;
+    iva = neto * 0.19;
+    total = neto + iva;
+  } else if (tipo === "quitar") {
+    total = monto;
+    neto = total / 1.19;
+    iva = total - neto;
+  } else {
+    neto = monto;
+    iva = neto * 0.19;
+    total = neto + iva;
+  }
+
+  const pesos = n => "$" + Math.round(n).toLocaleString("es-CL");
+
+  resultado.innerHTML =
+    "Valor neto: " + pesos(neto) + "<br>" +
+    "IVA (19%): " + pesos(iva) + "<br>" +
+    "Total: " + pesos(total);
+}
+</script>
 </body></html>
