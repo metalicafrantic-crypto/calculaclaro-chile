@@ -91,34 +91,72 @@ document.getElementById('year').textContent=new Date().getFullYear();
 </section>
 
 <style>
+
 #calculadora-iva {
-  padding: 20px;
-  margin: 20px auto;
+  padding: 25px;
+  margin: 25px auto;
   max-width: 500px;
-  border-radius: 12px;
-  background: #f2f6fa;
-  color: #222;
+  border-radius: 18px;
+  background: #ffffff;
+  color: #1e293b;
+  border: 1px solid #dbe5ef;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
+
+#calculadora-iva h2 {
+  color: #1769aa;
+  text-align: center;
+  font-size: 23px;
+}
+
+#calculadora-iva p {
+  text-align: center;
+  color: #64748b;
+}
+
+#calculadora-iva label {
+  display: block;
+  margin-top: 18px;
+  font-weight: bold;
+}
+
 #calculadora-iva input,
 #calculadora-iva select {
   display: block;
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   margin: 10px 0;
   box-sizing: border-box;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 16px;
 }
+
 #calculadora-iva button {
-  padding: 12px 20px;
+  width: 100%;
+  padding: 15px;
+  margin-top: 15px;
   background: #1769aa;
   color: white;
-  border: 0;
-  border-radius: 8px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
 }
+
+#calculadora-iva button:hover {
+  background: #12558b;
+}
+
 #iva-resultado {
-  margin-top: 15px;
-  font-weight: bold;
-  line-height: 1.8;
+  margin-top: 20px;
+  padding: 15px;
+  background: #eaf4ff;
+  border-radius: 10px;
+  color: #164e80;
+  font-size: 17px;
+  line-height: 2;
 }
 </style>
 
